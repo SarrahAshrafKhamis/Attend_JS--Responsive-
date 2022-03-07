@@ -1,0 +1,41 @@
+.modal-content {
+  border-radius: 25px;
+}
+.card-header {
+  display: flex;
+  justify-content: space-evenly;
+}
+.card-header > img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  transition: all 300ms;
+}
+.card-header > img:hover {
+  transform: scale(1.2);
+}
+.card-img-top {
+  transition: all 300ms;
+  opacity: 0.6;
+  height: 200px;
+}
+.card-text {
+  transition: all 300ms;
+}
+.card-img-top:hover {
+  opacity: 1;
+}
+.feattext {
+  opacity: 0;
+}
+.card-img-top:hover ~ .card-body .feattext {
+  opacity: 1;
+}
+#featcard {
+  display: flex;
+  justify-content: space-evenly;
+}
+#duplicate {
+  font-size: 14px;
+  display: none;
+}

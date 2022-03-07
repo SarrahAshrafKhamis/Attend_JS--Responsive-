@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "username": "skhamis",
+    "password": 123,
+    "isAdmin": true,
+    "isSecurity": false,
+    "isConfirmed": true
+  },
+  {
+    "id": "22adc680b8774",
+    "username": "enr28rx",
+    "password": "uftchyn",
+    "isAdmin": false,
+    "isSecurity": false,
+    "isConfirmed": true
+  },
+  {
+    "id": "7fa63412c6674",
+    "username": "v83z58l",
+    "password": "bvdribj",
+    "isAdmin": false,
+    "isSecurity": true,
+    "isConfirmed": true
+  },
+  {
+    "id": "4a212074d7d86",
+    "username": "cupgjos",
+    "password": "pod6awt",
+    "isAdmin": false,
+    "isSecurity": false,
+    "isConfirmed": false
+  },
+  {
+    "id": "edd328ed928b3",
+    "username": "bknhu76",
+    "password": "9uaqheg",
+    "isAdmin": false,
+    "isSecurity": true,
+    "isConfirmed": true
+  },
+  {
+    "id": "67dcb5a073897",
+    "username": "hyt56l5",
+    "password": "oe9r4vb",
+    "isAdmin": false,
+    "isSecurity": false,
+    "isConfirmed": true
+  },
+  {
+    "id": "ed1ced0d4ad92",
+    "username": "yc1n8ob",
+    "password": "b82zxej",
+    "isAdmin": false,
+    "isSecurity": true,
+    "isConfirmed": true
+  },
+  {
+    "id": "dac926d3cc4e9",
+    "username": "ndr3rzg",
+    "password": "jzn5wv1",
+    "isAdmin": false,
+    "isSecurity": false,
+    "isConfirmed": false
+  }
+]

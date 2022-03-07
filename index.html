@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="./Style/index.css" />
+  <title>Attend_JS</title>
+</head>
+
+<body class="min-vh-100">
+  <!--Begin Navbar-->
+  <nav class="navbar navbar-expand-sm navbar-light bg-light mb-5" id="basenave">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><i class="fa-solid fa-user-check fa-2x"></i><i
+          class="fa-solid fa-1x">Attend.</i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#registermodal">Register</a><a
+            class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginmodal">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!--End Navbar-->
+  <!--Begin Register modal-->
+  <div class="modal fade" id="registermodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="registermodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registermodalLabel">Register</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="needs-validation" novalidate id="registerform">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="firstname" placeholder="firstname" required minlength="3"
+                pattern="^[A-Za-z]+$">
+              <label for="firstname">First Name</label>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Firstname is alpha only and minlength is 3.</div>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="lastname" placeholder="lastname" required minlength="3"
+                pattern="^[A-Za-z]+$">
+              <label for="lastname">Last Name</label>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Lastname is alpha only and minlength is 3.</div>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="address" placeholder="address" required>
+              <label for="address">Address</label>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Please enter your address.</div>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="email" placeholder="email" required
+                pattern="^(([\w\.-])+)@([a-zA-Z0-9\-])+\.([a-zA-Z]){2,3}$">
+              <label for="email">Email</label>
+              <div class="valid-feedback" id="emailvalid">Looks good!</div>
+              <div class="invalid-feedback" id="emailinvalid">Please enter a valid email. ex: a@e.aa</div>
+              <!-- <div class="text-danger" id="duplicate">This email is already registered.</div> -->
+            </div>
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="age" placeholder="age" min="20" max="65" required>
+              <label for="age">Age</label>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Age minimum is 20 and maximum is 65.</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <div class="me-auto">
+            <p>Already have an acount? <a href="#" data-bs-toggle="modal" data-bs-target="#loginmodal">Login!</a></p>
+          </div>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-success" id="registerbtn">
+            Register
+          </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Register modal-->
+  <!--Begin Login modal-->
+  <div class="modal fade" id="loginmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="loginmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginmodalLabel">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="needs-validation" novalidate id="loginform">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="username" placeholder="username" required minlength="7"
+                maxlength="7">
+              <label for="username">Username</label>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback" id="invalidusername">Username length must equal 7.</div>
+            </div>
+            <div class="form-floating">
+              <input type="password" class="form-control" id="password" placeholder="Password" required minlength="3"
+                maxlength="7">
+              <label for="password">Password</label>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback" id="invalidpassword">Password minimum lenghth is 3 and maxlength is 7.</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <div class="me-auto">
+            <p>Don't have an acount? <a href="#" data-bs-toggle="modal" data-bs-target="#registermodal">Register!</a>
+            </p>
+          </div>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-success" id="loginbtn">
+            Login
+          </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End login modal-->
+  <!--Begin features-->
+  <div class="row g-0" id="features">
+    <div class="col-12 text-center my-5">
+      <h2 class="fw-bold">Features</h2>
+    </div>
+    <div class="row g-0 row-cols-2 row-cols-lg-3 row-cols-xl-4" id="featcard">
+      <div class="card border-0" style="width: 18rem">
+        <img src="./images/report.png" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <p class="card-text feattext text-center">
+            You can monitor your employees attendance and also your attendance easily without much effort!
+          </p>
+        </div>
+      </div>
+      <div class="card border-0" style="width: 18rem">
+        <img src="./images/filter2.jpg" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <p class="card-text feattext text-center">
+            Based on our smart reports, you can easily choose the employee of the month and encourage them!
+          </p>
+        </div>
+      </div>
+      <div class="card border-0" style="width: 18rem">
+        <img src="./images/rating.jpg" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <p class="card-text feattext text-center">
+            You can see your rating and score based on your monthly attendance sheet to always stay in the top!
+          </p>
+        </div>
+      </div>
+      <div class="card border-0" style="width: 18rem">
+        <img src="./images/emp.jpg" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <p class="card-text feattext text-center">
+            Many usefull assets to help you run your company to keep your eyes on the ball!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End features-->
+  <!--Begin feedback-->
+  <div class="row g-0 mb-5" id="feedback">
+    <div class="col-12 text-center my-3">
+      <h2 class="fw-bold">Feedback</h2>
+    </div>
+    <div class="row g-0">
+      <div class="card col-9 m-auto">
+        <div class="card-header" id="feedimgswrapper"></div>
+        <div class="card-body text-center feedcard">
+          <h5 class="card-title" id="feedname">Name to be</h5>
+          <p class="card-text" id="feedbody">
+            Feedback to be.
+          </p>
+          <div id="rating" class="my-3">hi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End feedback-->
+  <!--Begin Footer-->
+  <div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <div class="col-md-4 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+          <svg class="bi" width="30" height="24">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+        </a>
+        <span class="text-muted">© 2021 AttendJS, Inc</span>
+      </div>
+
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><i
+                class="fa-brands fa-facebook fa-2x"></i></svg></a></li>
+        <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><i
+                class="fa-brands fa-twitter fa-2x"></i></svg></a></li>
+        <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><i
+                class="fa-brands fa-instagram fa-2x"></i></svg></a></li>
+      </ul>
+    </footer>
+  </div>
+  <!--End Footer-->
+  <!----------------------------------------------------------------------------------------------------------------->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="Script/registerValidation.js" type="module"></script>
+  <script src="Script/loginValidation.js" type="module"></script>
+  <script src="Script/feedback.js"></script>
+</body>
+
+</html>

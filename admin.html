@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="Script/regRequests.js" type="module"></script>
+  <script src="Script/mainAdmin.js" type="module"></script>
+  <script src="Script/settings.js"></script>
+  <style>
+    .modal-content {
+      border-radius: 25px;
+    }
+  </style>
+  <title>Attend_JS</title>
+</head>
+
+<body class="min-vh-100">
+  <!--Begin Navbar-->
+  <nav class="navbar navbar-expand-md navbar-light bg-light mb-5" id="basenave">
+    <div class="container-fluid">
+      <a class="navbar-brand" href=""><i class="fa-solid fa-user-check fa-2x"></i><i
+          class="fa-solid fa-1x">Attend.</i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link active" aria-current="page" href="#" id="linkreqreq">Registeration Requests</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Reports
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li>
+                <a class="dropdown-item" href="#" id="linkallemps">All Employees</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" id="linkdaily">Daily Report</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" id="linkmonthly">Monthly Report</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" id="linklate">Late Report</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" id="linkexecuse">Execuse Report</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" id="linkbrief">Employee Brief</a>
+              </li>
+            </ul>
+          </li>
+          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#registermodal" id="linkregsec">Register
+            Security</a>
+          <a class="nav-link" aria-current="page" href="#" id="linksettings">Settings</a>
+          <button class="btn btn-secondary" disabled id="namebtn">Admin</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!--End Navbar-->
+  <!--Begin Admin wrapper-->
+  <div class="container table-responsive" id="adminwrapper">
+    <table class="table table-hover" id="regrequests">
+      <thead>
+        <tr>
+          <th scope="col">EmpID</th>
+          <th scope="col">EmpName</th>
+          <th scope="col">Operations</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <table class="table table-hover" id="daily">
+      <thead>
+        <tr>
+          <th scope="col">Username</th>
+          <th scope="col">Name</th>
+          <th scope="col">Status</th>
+          <th scope="col">Signin</th>
+          <th scope="col">Late Signin</th>
+          <th scope="col">Execuse Signin</th>
+          <th scope="col">Signout</th>
+          <th scope="col">Early Signout</th>
+          <th scope="col">Execuse Signout</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <table class="table table-hover" id="allemps">
+      <thead>
+        <tr>
+          <th scope="col">Username</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Email</th>
+          <th scope="col">Age</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <table class="table table-hover" id="monthly">
+      <thead>
+        <tr>
+          <th scope="col">Username</th>
+          <th scope="col">Name</th>
+          <th scope="col">Absences</th>
+          <th scope="col">Lates</th>
+          <th scope="col">Excuses</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <table class="table table-hover" id="late">
+      <thead>
+        <tr>
+          <th scope="col">Username</th>
+          <th scope="col">Name</th>
+          <th scope="col">Lates</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <table class="table table-hover" id="execuse">
+      <thead>
+        <tr>
+          <th scope="col">Username</th>
+          <th scope="col">Name</th>
+          <th scope="col">Execuses</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div id="briefdiv">
+      <div class="my-5">
+        <select name="eid" id="eid" title="eid" class="form-select">
+          <option value="" selected disabled hidden>
+            Select Employee Username
+          </option>
+        </select>
+      </div>
+      <table class="table table-hover" id="brief">
+        <tr>
+          <th>First Name:</th>
+          <td id="efname"></td>
+        </tr>
+        <tr>
+          <th>Last Name:</th>
+          <td id="elname"></td>
+        </tr>
+        <tr>
+          <th>Points:</th>
+          <td id="epoints"></td>
+        </tr>
+        <tr>
+          <th>Total Points:</th>
+          <td id="total"></td>
+        </tr>
+        <tr>
+          <th>Percentage:</th>
+          <td id="percent"></td>
+        </tr>
+      </table>
+    </div>
+    <table class="table table-hover" id="settings">
+      <tr>
+        <th>Work Hours Start:</th>
+        <td colspan="2"><input class="set form-control set" id="intime" type="time" value="08:30" /></td>
+      </tr>
+      <tr>
+        <th>Work Hours End:</th>
+        <td colspan="2"><input class="set form-control set" id="outtime" type="time" value="15:30" /></td>
+      </tr>
+      <tr>
+        <th>Weekend:</th>
+        <td colspan="2">
+          <select class="set form-select" id="weekend" name="weekend" title="weekend" multiple>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday" selected>Friday</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th>Total Evaluation Points:</th>
+        <td colspan="2">
+          <div class="input-group mb-3">
+            <input type="number" id="totalpoints" class="form-control set" min="1" value="300"
+              aria-describedby="basic-addon2">
+            <span class="input-group-text" id="basic-addon2">points</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>For Absence:</th>
+        <td colspan="2">
+          <div class="input-group mb-3">
+            <span class="input-group-text">Minus</span>
+            <input id="abspoint" type="number" min="1" value="10" class="form-control set">
+            <span class="input-group-text">Points</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>For Late:</th>
+        <td>
+          <div class="input-group mb-3">
+            <span class="input-group-text">Each</span>
+            <input id="latemins" type="number" min="1" value="15" class="form-control set">
+            <span class="input-group-text">Minutes</span>
+          </div>
+        </td>
+        <td>
+          <div class="input-group mb-3">
+            <span class="input-group-text">Minus</span>
+            <input id="latepoint" type="number" min="1" value="1" class="form-control set">
+            <span class="input-group-text">Points</span>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <!--End Admin Wrapper-->
+  <!--Begin Register Security modal-->
+  <div class="modal fade" id="registermodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="registermodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registermodalLabel">Register Security</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="needs-validation" novalidate id="registerform">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="firstname" placeholder="firstname" required minlength="3"
+                pattern="^[A-Za-z]+$">
+              <label for="firstname">First Name</label>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Firstname is alpha only and minlength is 3.</div>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="lastname" placeholder="lastname" required minlength="3"
+                pattern="^[A-Za-z]+$">
+              <label for="lastname">Last Name</label>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Lastname is alpha only and minlength is 3.</div>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="address" placeholder="address" required>
+              <label for="address">Address</label>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Please enter your address.</div>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="email" placeholder="email" required
+                pattern="^(([\w\.-])+)@([a-zA-Z0-9\-])+\.([a-zA-Z]){2,3}$">
+              <label for="email">Email</label>
+              <div class="valid-feedback" id="emailvalid">Looks good!</div>
+              <div class="invalid-feedback" id="emailinvalid">Please enter a valid email. ex: a@e.aa</div>
+              <!-- <div class="text-danger" id="duplicate">This email is already registered.</div> -->
+            </div>
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="age" placeholder="age" min="20" max="65" required>
+              <label for="age">Age</label>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Age minimum is 20 and maximum is 65.</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-success" id="registerbtn">
+            Register
+          </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Register Security modal-->
+  <!--Begin Footer-->
+  <div class="container fixed-bottom">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <div class="col-md-4 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+          <svg class="bi" width="30" height="24">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+        </a>
+        <span class="text-muted">© 2021 AttendJS, Inc</span>
+      </div>
+
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3">
+          <a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+              <i class="fa-brands fa-facebook fa-2x"></i></svg></a>
+        </li>
+        <li class="ms-3">
+          <a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+              <i class="fa-brands fa-twitter fa-2x"></i></svg></a>
+        </li>
+        <li class="ms-3">
+          <a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+              <i class="fa-brands fa-instagram fa-2x"></i></svg></a>
+        </li>
+      </ul>
+    </footer>
+  </div>
+  <!--End Footer-->
+  <!----------------------------------------------------------------------------------------------------------------->
+  <script src="Script/registerValidation.js" type="module"></script>
+</body>
+
+</html>
